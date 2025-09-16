@@ -1,0 +1,38 @@
+/* src/layouts/AdminLayout.css */
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.admin-layout .admin-sidebar {
+  width: 220px;
+  background-color: #f4f4f4;
+  padding: 1rem;
+  border-right: 1px solid #ddd;
+}
+
+.admin-layout .admin-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-layout .admin-sidebar li {
+  margin: 1rem 0;
+}
+
+.admin-layout .admin-sidebar a {
+  text-decoration: none;
+  color: #333;
+}
+
+.admin-layout .admin-sidebar a:hover {
+  text-decoration: underline;
+}
+
+/* Content */
+.admin-layout .admin-content {
+  flex-grow: 1;
+  padding: 2rem;
+}

@@ -1,0 +1,66 @@
+.homepage {
+  font-family: Arial, sans-serif;
+}
+
+
+.hero {
+  background: url("https://www.shutterstock.com/image-photo/different-modern-devices-gadgets-on-260nw-2399256451.jpg") no-repeat center/cover;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.hero button {
+  background: #ff6f61;
+  border: none;
+  padding: 12px 28px;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero button:hover {
+  background: #e64437;
+}
+
+.intro {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.intro h2 {
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.intro-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.intro-card {
+  background: #bbb;
+  padding: 20px;
+  border-radius: 8px;
+  width: 250px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+}
+
+.intro-card:hover {
+  transform: translateY(-5px);
+}

@@ -1,0 +1,90 @@
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+button {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  margin: 2px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+/* Thêm sản phẩm */
+button.add-btn {
+  background: #28a745;
+  color: white;
+}
+
+/* Nút sửa */
+button.edit-btn {
+  background: #ffc107;
+  color: #000;
+}
+
+/* Nút xoá */
+button.delete-btn {
+  background: #dc3545;
+  color: white;
+}
+
+/* Nút lưu */
+button.save-btn {
+  background: #007bff;
+  color: white;
+}
+
+/* Nút huỷ */
+button.cancel-btn {
+  background: #6c757d;
+  color: white;
+}
+
+/* Bảng */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+th, td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+th {
+  background: #f8f9fa;
+  font-weight: bold;
+}
+
+tr:hover {
+  background: #f1f1f1;
+}
+
+input[type="text"],
+input[type="number"] {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 14px;
+}

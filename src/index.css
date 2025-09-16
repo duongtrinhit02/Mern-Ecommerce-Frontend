@@ -1,0 +1,153 @@
+
+.main-header {
+  background: #0d1117;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #6c7279;
+  display: flex;
+  align-items: center;
+}
+
+.logo i {
+  margin-right: 0.5rem;
+}
+
+/* ===== ICON MENU ===== */
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav a {
+  position: relative;
+  font-size: 1.3rem;
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.nav a:hover {
+  color: #58a6ff;
+  transform: scale(1.2);
+}
+
+/* Tooltip (hiện khi hover) */
+.nav a::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #222;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.nav a:hover::after {
+  opacity: 1;
+}
+
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+.main-content {
+  flex: 1;
+  background-color: #fff;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+  background-color: #0d1117;
+  color: #bbb;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-container p {
+  margin: 0;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icons a {
+  color: #bbb;
+  font-size: 1.2rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #1da1f2; /* Twitter màu xanh nhạt - dễ nhìn */
+  transform: scale(1.2);
+}
+
+/* Responsive Nav (optional) */
+/* @media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav a {
+    margin: 0.5rem 0;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-icons {
+    margin-top: 0.5rem;
+  }
+} */
