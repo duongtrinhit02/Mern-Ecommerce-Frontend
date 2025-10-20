@@ -4,20 +4,22 @@ import { Link } from 'react-router-dom';
 import '../styles/ProductsPage.css'; 
 
 export default function ProductsPage() {
-  const [allProducts, setAllProducts] = useState([]); 
-  const [products, setProducts] = useState([]); 
-  const [categories, setCategories] = useState([]); // ✅ lưu danh sách categories
+  const [allProducts, setAllProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState('');
-  const [category, setCategory] = useState(''); // ✅ category filter
+  const [category, setCategory] = useState('');
 
-  // Lấy products
+  // Fetch products
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        console.log("Fetching products from axios instance:", axios.defaults.baseURL);
         const res = await axios.get('/products');
+        console.log("Products fetched:", res.data);
         setAllProducts(res.data);
         setProducts(res.data);
       } catch (err) {
@@ -26,25 +28,24 @@ export default function ProductsPage() {
         setLoading(false);
       }
     };
-
     fetchProducts();
   }, []);
 
-  // Lấy categories từ backend
+  // Fetch categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const res = await axios.get('/products/categories/list');
+        console.log("Categories fetched:", res.data);
         setCategories(res.data);
       } catch (err) {
         console.error('Failed to fetch categories:', err);
       }
     };
-
     fetchCategories();
   }, []);
 
-  // Cập nhật danh sách khi search/sort/category thay đổi
+  // Filter / search / sort
   useEffect(() => {
     let filtered = [...allProducts];
 
@@ -64,6 +65,7 @@ export default function ProductsPage() {
       filtered.sort((a, b) => b.price - a.price);
     }
 
+    console.log("Filtered products:", filtered);
     setProducts(filtered);
   }, [search, sort, category, allProducts]);
 
@@ -73,7 +75,6 @@ export default function ProductsPage() {
     <div className="products-page">
       <h2>Danh sách sản phẩm</h2>
 
-      {/* Thanh search + sort + filter category */}
       <div className="product-filters">
         <input
           type="text"
@@ -104,20 +105,12 @@ export default function ProductsPage() {
           products.map((product) => (
             <div className="product-card" key={product._id}>
               {product.image && (
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="product-image"
-                />
+                <img src={product.image} alt={product.name} className="product-image" />
               )}
               <h3 className="product-name">{product.name}</h3>
-              <p className="product-price">
-                Giá: {product.price.toLocaleString()}₫
-              </p>
+              <p className="product-price">Giá: {product.price.toLocaleString()}₫</p>
               <p className="product-category">Loại: {product.category}</p>
-              <Link to={`/products/${product._id}`} className="product-link">
-                Xem chi tiết
-              </Link>
+              <Link to={`/products/${product._id}`} className="product-link">Xem chi tiết</Link>
             </div>
           ))
         )}
