@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from '../utils/axiosInstance'; 
 import { Link } from 'react-router-dom';
-import '../styles/Productspage.css'; 
+import '../styles/ProductsPage.css'; 
 
 export default function ProductsPage() {
   const [allProducts, setAllProducts] = useState([]); 
