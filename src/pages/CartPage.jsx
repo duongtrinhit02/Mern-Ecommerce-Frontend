@@ -13,8 +13,8 @@ export default function CartPage() {
 
   return (
     <div className="cart-container">
-      <h2 className="cart-title">Your Cart</h2>
-      {cart.length === 0 && <p className="cart-empty">Cart is empty</p>}
+      <h2 className="cart-title">Giỏ Hàng </h2>
+      {cart.length === 0 && <p className="cart-empty">Giỏ hàng dáng trống</p>}
 
       {cart.map((item) => (
         <div key={item.product._id} className="cart-item">
@@ -43,7 +43,7 @@ export default function CartPage() {
       ))}
 
       <h3 className="cart-total">
-        Total: {total.toLocaleString("vi-VN")} ₫
+        Tổng tiền: {total.toLocaleString("vi-VN")} ₫
       </h3>
       <button
         onClick={() => navigate("/checkout")}
