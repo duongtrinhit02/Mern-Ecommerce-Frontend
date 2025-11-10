@@ -3,10 +3,8 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    port: 5173, // cổng chạy local (tùy chọn)
-  },
   build: {
-    outDir: 'dist', // thư mục output cho Vercel
+    outDir: 'dist', // Vercel sẽ build từ thư mục này
   },
+  base: './', // giúp Vercel định vị đúng đường dẫn tài nguyên
 })

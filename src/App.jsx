@@ -49,7 +49,7 @@ export default function App() {
         <Route path="/profile" element={<ProfileDetail />} />
       </Route>
 
-      {/* Admin routes (không có Header/Footer) */}
+     
       <Route
         path="/admin"
         element={

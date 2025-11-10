@@ -48,14 +48,14 @@ const handleSubmit = async (e) => {
   return (
     <div className="login-wrapper">
       <form className="login-form" onSubmit={handleSubmit}>
-        <h2 className="login-title">Welcome!</h2>
+        <h2 className="login-title">Xin Chào!!!</h2>
 
         <div className="input-group">
           <span className="icon">👤</span>
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="Nhập Email"
             value={form.email}
             onChange={handleChange}
             required
@@ -67,7 +67,7 @@ const handleSubmit = async (e) => {
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="Nhập Password"
             value={form.password}
             onChange={handleChange}
             required
@@ -75,7 +75,7 @@ const handleSubmit = async (e) => {
         </div>
 
         <button className="login-button" type="submit" disabled={loading}>
-          {loading ? 'Đang đăng nhập...' : 'Login'}
+          {loading ? 'Đang đăng nhập...' : 'Đăng nhập'}
         </button>
       </form>
     </div>
