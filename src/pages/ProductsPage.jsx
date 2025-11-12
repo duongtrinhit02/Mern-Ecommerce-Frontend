@@ -1,3 +1,4 @@
+// src/pages/ProductsPage.jsx
 import { useEffect, useState } from 'react';
 import axios from '../utils/axiosInstance'; 
 import { Link } from 'react-router-dom';
@@ -13,13 +14,10 @@ export default function ProductsPage() {
   const [sort, setSort] = useState('');
   const [category, setCategory] = useState('');
 
-  // Fetch products
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        console.log("Fetching products from axios instance:", axios.defaults.baseURL);
         const res = await axios.get('/products');
-        console.log("Products fetched:", res.data);
         setAllProducts(res.data);
         setProducts(res.data);
       } catch (err) {
@@ -31,12 +29,10 @@ export default function ProductsPage() {
     fetchProducts();
   }, []);
 
-  // Fetch categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const res = await axios.get('/products/categories/list');
-        console.log("Categories fetched:", res.data);
         setCategories(res.data);
       } catch (err) {
         console.error('Failed to fetch categories:', err);
@@ -45,7 +41,6 @@ export default function ProductsPage() {
     fetchCategories();
   }, []);
 
-  // Filter / search / sort
   useEffect(() => {
     let filtered = [...allProducts];
 
@@ -59,13 +54,9 @@ export default function ProductsPage() {
       filtered = filtered.filter((p) => p.category === category);
     }
 
-    if (sort === 'asc') {
-      filtered.sort((a, b) => a.price - b.price);
-    } else if (sort === 'desc') {
-      filtered.sort((a, b) => b.price - a.price);
-    }
+    if (sort === 'asc') filtered.sort((a, b) => a.price - b.price);
+    else if (sort === 'desc') filtered.sort((a, b) => b.price - a.price);
 
-    console.log("Filtered products:", filtered);
     setProducts(filtered);
   }, [search, sort, category, allProducts]);
 
@@ -78,18 +69,16 @@ export default function ProductsPage() {
       <div className="product-filters">
         <input
           type="text"
-          placeholder="Tìm kiếm theo tên..."
+          placeholder="Tìm kiếm..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="search-input"
         />
-
         <select value={sort} onChange={(e) => setSort(e.target.value)} className="sort-select">
           <option value="">Sắp xếp</option>
           <option value="asc">Giá tăng dần</option>
           <option value="desc">Giá giảm dần</option>
         </select>
-
         <select value={category} onChange={(e) => setCategory(e.target.value)} className="category-select">
           <option value="">Tất cả loại</option>
           {categories.map((c) => (
@@ -98,18 +87,23 @@ export default function ProductsPage() {
         </select>
       </div>
 
-      <div className="product-grid">
+      <div className="product-list">
         {products.length === 0 ? (
           <p>Không có sản phẩm nào.</p>
         ) : (
           products.map((product) => (
             <div className="product-card" key={product._id}>
-              {product.image && (
+              {/* Nếu backend dùng mảng images, lấy ảnh đầu tiên */}
+              {product.images?.length > 0 ? (
+                <img src={product.images[0]} alt={product.name} className="product-image" />
+              ) : product.image ? (
                 <img src={product.image} alt={product.name} className="product-image" />
+              ) : (
+                <img src="/images/default.png" alt={product.name} className="product-image" />
               )}
               <h3 className="product-name">{product.name}</h3>
-              <p className="product-price">Giá: {product.price.toLocaleString()}₫</p>
-              <p className="product-category">Loại: {product.category}</p>
+              <p className="product-price">{product.price.toLocaleString()}₫</p>
+              <p className="product-category">{product.category}</p>
               <Link to={`/products/${product._id}`} className="product-link">Xem chi tiết</Link>
             </div>
           ))

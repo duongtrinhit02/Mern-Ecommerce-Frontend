@@ -1,91 +1,133 @@
 /* src/styles/ProfileDetail.css */
 
 .profile-container {
+  padding: 30px 20px;
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  align-items: flex-start;
+  min-height: 80vh;
+  background: #f9f9f9;
 }
 
 .profile-card {
-  display: flex;
-  gap: 24px;
   background: #fff;
-  border-radius: 12px;
-  padding: 24px 32px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  width: 600px;
-  max-width: 95%;
+  border-radius: 16px;
+  padding: 25px 30px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.12);
 }
 
 .profile-avatar img {
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #ddd;
+  border: 3px solid #007bff;
+  padding: 3px;
+  background: #f5f5f5;
 }
 
 .profile-info {
-  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
 }
 
 .profile-info h2 {
-  margin-bottom: 8px;
-  font-size: 22px;
-  color: #333;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 5px;
 }
 
 .profile-info p {
-  margin: 6px 0;
+  font-size: 0.95rem;
   color: #555;
+  margin: 3px 0;
 }
 
 .profile-info input {
-  display: block;
-  width: 100%;
-  margin-bottom: 12px;
-  padding: 10px 12px;
+  width: 90%;
+  padding: 10px 14px;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
 }
 
-.edit-btn,
-.save-btn,
-.cancel-btn {
-  margin-top: 12px;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 8px;
+.profile-info input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+button {
   cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  transition: all 0.3s ease;
 }
 
 .edit-btn {
-  background: #007bff;
-  color: white;
+  background: linear-gradient(135deg,#007bff,#00c6ff);
+  color: #fff;
 }
 
 .edit-btn:hover {
-  background: #0062cc;
+  background: linear-gradient(135deg,#0056b3,#009acd);
+  transform: translateY(-2px);
 }
 
 .save-btn {
   background: #28a745;
-  color: white;
-  margin-right: 10px;
+  color: #fff;
 }
 
 .save-btn:hover {
-  background: #218838;
+  background: #1e7e34;
+  transform: translateY(-2px);
 }
 
 .cancel-btn {
   background: #dc3545;
-  color: white;
+  color: #fff;
+  margin-left: 10px;
 }
 
 .cancel-btn:hover {
-  background: #c82333;
+  background: #a71d2a;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .profile-card {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .profile-avatar img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .profile-info input {
+    width: 100%;
+  }
 }

@@ -1,3 +1,4 @@
+// src/pages/CartPage.jsx
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import '../styles/CartPage.css';
@@ -13,32 +14,39 @@ export default function CartPage() {
 
   return (
     <div className="cart-container">
-      <h2 className="cart-title">Giỏ Hàng </h2>
-      {cart.length === 0 && <p className="cart-empty">Giỏ hàng dáng trống</p>}
+      <h2 className="cart-title">Giỏ Hàng</h2>
+      {cart.length === 0 && <p className="cart-empty">Giỏ hàng đang trống</p>}
 
       {cart.map((item) => (
         <div key={item.product._id} className="cart-item">
+          <div className="cart-item-img">
+            {item.product.image && (
+              <img src={item.product.image} alt={item.product.name} />
+            )}
+          </div>
           <div className="cart-item-info">
             <h4 className="cart-item-name">{item.product.name}</h4>
             <p className="cart-item-price">
               {item.product.price.toLocaleString("vi-VN")} ₫
             </p>
           </div>
-          <input
-            type="number"
-            className="cart-item-qty"
-            value={item.quantity}
-            min="1"
-            onChange={(e) =>
-              updateQty(item.product._id, Number(e.target.value))
-            }
-          />
-          <button
-            className="cart-item-remove"
-            onClick={() => removeFromCart(item.product._id)}
-          >
-            Remove
-          </button>
+          <div className="cart-item-controls">
+            <input
+              type="number"
+              className="cart-item-qty"
+              value={item.quantity}
+              min="1"
+              onChange={(e) =>
+                updateQty(item.product._id, Number(e.target.value))
+              }
+            />
+            <button
+              className="cart-item-remove"
+              onClick={() => removeFromCart(item.product._id)}
+            >
+              Xóa
+            </button>
+          </div>
         </div>
       ))}
 
